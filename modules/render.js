@@ -5,8 +5,9 @@ Canvas.registerFont("./FuturaBT-ExtraBlackCondensed.otf", {family: "Futura"})
 
 let cache = new Map()
 
-let length   = 320
-let width    = 320
+let width    = 498
+let height   = 239
+let delay    = 70
 
 let offset   = 45
 let octree   = false
@@ -18,7 +19,7 @@ exports.init = () => {
             let frame = frames[i]
             let image = await Canvas.loadImage(`./frames/${frame}`)
 
-            let c = Canvas.createCanvas(length, width)
+            let c = Canvas.createCanvas(width, height)
             let ctx = c.getContext("2d")
             ctx.drawImage(image, 0, 0)
             cache.set(frame, c)
@@ -28,11 +29,11 @@ exports.init = () => {
 }
 
 exports.meme = async (ip) => {
-    const encoder = new GIFEncoder(length, width+offset, octree ? "octree" : undefined, true)
-    encoder.setDelay(40)
+    const encoder = new GIFEncoder(width, height+offset, octree ? "octree" : undefined, true)
+    encoder.setDelay(delay)
     encoder.start()
 
-    let f = Canvas.createCanvas(length, width+offset)
+    let f = Canvas.createCanvas(width, height+offset)
     let frame = f.getContext("2d")
 
     for (let i = 0; i < cache.size; i++) {
