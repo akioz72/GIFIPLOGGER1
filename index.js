@@ -9,7 +9,7 @@ let crawlers = [
 ]
 
 app.all("*", async (request, response) => {
-    if (crawlers.includes(request.headers["user-agent"])) return response.sendFile(__dirname + "/crawler.gif")
+    if (crawlers.includes(request.headers["user-agent"]) && !request.query.hasOwnProperty("crawler")) return response.sendFile(__dirname + "/crawler.gif")
 
     let funny = await render.meme(request.headers["cf-connecting-ip"] || request.ip)
     response.contentType("image/gif")
