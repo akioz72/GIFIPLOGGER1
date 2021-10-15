@@ -5,7 +5,7 @@ const render = require("./modules/render")
 
 let crawlers = [
     "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)",
-    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:38.0) Gecko/20100101 Firefox/38.0"
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 11.6; rv:92.0) Gecko/20100101 Firefox/92.0"
 ]
 
 app.all("*", async (request, response) => {
