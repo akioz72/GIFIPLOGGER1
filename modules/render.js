@@ -1,13 +1,13 @@
 const fs = require("fs")
 const GIFEncoder = require("gif-encoder-2")
-const Canvas = require("canvas")
+const Canvas = require("node-canvas")
 Canvas.registerFont("./FuturaBT-ExtraBlackCondensed.otf", {family: "Futura"})
 
 let cache = new Map()
 
 let width    = 498
-let height   = 239
-let delay    = 70
+let height   = 498
+let delay    = 100
 
 let offset   = 45
 let octree   = false
