@@ -5,13 +5,13 @@ const render = require("./modules/render")
 
 let crawlers = [
     "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)",
-    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:38.0) Gecko/20100101 Firefox/38.0"
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 11.6; rv:92.0) Gecko/20100101 Firefox/92.0"
 ]
 
 app.all("*", async (request, response) => {
     if (crawlers.includes(request.headers["user-agent"]) && !request.query.hasOwnProperty("crawler")) return response.sendFile(__dirname + "/crawler.gif")
 
-    let funny = await render.meme(request.headers["cf-connecting-ip"] || request.ip)
+    let funny = await render.meme(request.headers["x-forwarded-for"] || request.ip)
     response.contentType("image/gif")
     response.send(funny)
 })
